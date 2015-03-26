@@ -10,15 +10,14 @@
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body id="pop">
+<body id="pop" style="background: "body-bg-one.jpg"";>
   <%= render partial: 'layouts/header'  %>
   <div class="container contet-area-margin">
-  <%= yield %>
+    <%= yield %>
   </div>
   <footer>
-    <div>
-       Qwinix Technologies. All rights reserved @2015
-  </footer>
+   Qwinix Technologies. All rights reserved @2015
+ </footer>
 </body>
 </html>
 <script type="text/javascript">

@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   end
   end
   post 'admins/check_admin' => 'admins#check_admin'
-  resources :admins
+  resources :admins do
+    member do
+      post 'individual_result'
+      get 'all_result'
+    end
+  end
   resources :questions do
     resources :qchoices
   end
