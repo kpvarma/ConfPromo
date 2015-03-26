@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module ConfPromo
   class Application < Rails::Application
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -21,7 +22,7 @@ module ConfPromo
     # config.i18n.default_locale = :de
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.precompile = ['application.js','application.css']
-    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
     config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif *.ico]
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true

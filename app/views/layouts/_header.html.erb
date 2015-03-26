@@ -7,13 +7,12 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="logo"><%= image_tag "qwinix-logo.png", :alt=>"logo", :class=>"logo" %></a>
+    <a class="logo"><%= image_tag "qwnix_logo.png", :alt=>"logo", :class=>"logo" %></a>
   </div>
   <div class="collapse navbar-collapse">
     <% if session[:user_id].present? %>
     <p class="navbar-right intro" style="color: white;"><%= User.find(session[:user_id]).user_name.titleize %></p>
     <% else %>
-    <a href="#" class="navbar-right intro">Introduction</a>
     <% end %>
   </div>
 </div>

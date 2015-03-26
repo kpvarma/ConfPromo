@@ -16,7 +16,7 @@ development:
   database: quiz_development
   pool: 5
   username: postgres
-  password: sharmila
+  password: athukuthubale8
   host: localhost
   port: 5432
 
@@ -27,7 +27,7 @@ test:
   database: quiz_test
   pool: 5
   username: postgres
-  password: sharmila
+  password: athukuthubale8
   host: localhost
   port: 5432
 

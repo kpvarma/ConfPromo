@@ -1,7 +1,7 @@
 body {
   font-family: 'Titillium Web', sans-serif;
   color: #222222;font-weight: 400;font-size: 16px;
-  background: url("body-bg-one.jpg");
+  background-image: url("body-bg-one.jpg");
   background-position: top left;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -132,7 +132,7 @@ a:hover {
 }*/
 footer {
   position: absolute;bottom: 0;height: 60px;width: 100%;
-  background: url("footer-bg-one.jpg");
+  background-image: url("footer-bg-one.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #E9E9E9;

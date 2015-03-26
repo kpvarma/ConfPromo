@@ -31,12 +31,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if $i < 4
+    if $i < 15
       @question = Question.find @@question_ids.pop
       @choices = Qchoice.where(question_id: @question.id)
-    # elsif $i >= 15 && $i < 20
-    #   @question = Question.find @@qwinix.pop
-    #   @choices = Qchoice.where(question_id: @question.id)
+    elsif $i >= 15 && $i < 20
+      @question = Question.find @@qwinix.pop
+      @choices = Qchoice.where(question_id: @question.id)
     else
       redirect_to result_user_path
     end
