@@ -4,7 +4,7 @@ applications:
   memory: 256M
   instances: 1
   url: confpromo.cfapps.io
-  command: bundle exec rake db:create db:migrate db:seed && bundle exec rails s -p $PORT
+  command: bundle exec rake db:create db:migrate db:seed && bundle exec rails s -p $PORT && bundle exec rails c
   path: .
   services:
     - ruby-goa-conf
