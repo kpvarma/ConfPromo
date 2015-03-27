@@ -19,7 +19,6 @@ def all_result
 end
 
 def individual_result
-  binding.pry
   @u = User.find_by_email(params[:individual_result][:email])
   end
 end
