@@ -1,0 +1,16 @@
+Name: <%= @u.user_name %><br>Email: <%= @u.email %><br>Designation: <%= @u.designation %><br>Organization: <%= @u.organization %><br>
+<table border="1" style="width:100%">
+  <tr>
+    <th>Question</th>
+    <th>Choosen Answer</th>
+    <th>Correct Answer</th>
+  </tr>
+  <% @u.uanswers.each do |ua| %>
+  <tr>
+    <td><%= Question.find_by_id(ua.question_id).question %></td>
+    <td><%= ua.choosen_answer%></td>
+    <td><%= Question.find_by_id(ua.question_id).answer_id%></td>
+  </tr>
+  <% end %>
+</table>
+<br>

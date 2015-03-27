@@ -1,9 +1,11 @@
-<% @i=0 %>
-<% @users.each do |u| %>
-<%= @i +=1%>.Name: <%= u.user_name %><br>Organization: <%= u.organization %><br>
-<% u.uanswers.each do |ua| %>
-Question: <%= Question.find_by_id(ua.question_id).question %>
-Choosen Answer: <%= ua.choosen_answer%>
-Correct Answer: <%= Question.find_by_id(ua.question_id).answer_id%><br>
-<% end %><br>
+<h1><%= link_to "View All Results", all_result_admin_path %></h1><br><br>
+<h1>Search by Email</h1>
+<%= form_for :individual_result, url: individual_result_admin_path, :method => :post do |f|%>
+<p>
+  <%= label_tag :Email %><br>
+  <%= f.text_field :email %>
+</p>
+<p>
+  <%= f.submit "ok" %>
+</p>
 <% end %>
