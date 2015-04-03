@@ -1,13 +1,40 @@
 class User < ActiveRecord::Base
+
+  # including Password Methods
+  has_secure_password
+
+  # FIXME: Not sure if we need rolify
   rolify
+
+  # Constants
+  DEFAULT_PASSWORD = "Password@1"
+
+  # Validations
+  extend PoodleValidators
+  validate_string :name, mandatory: true
+  validate_email :email
+  validate_password :password, condition_method: :should_validate_password?
+
+  # Associations
   has_many :uanswers
 
-  validates :user_name, presence: true
+  # ------------------
+  # Class Methods
+  # ------------------
 
-  # validates :email, presence: true, uniqueness: true,
-  # :format => { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
+  # return an active record relation object with the search query in its where clause
+  # Return the ActiveRecord::Relation object
+  # == Examples
+  #   >>> user.search(query)
+  #   => ActiveRecord::Relation object
+  scope :search, lambda {|query| where("LOWER(name) LIKE LOWER('%#{query}%') OR\
+                                        LOWER(email) LIKE LOWER('%#{query}%')")
+                        }
 
-  validates :organization, presence: true
+  private
 
-  validates :designation, presence: true
+  def should_validate_password?
+    self.new_record? || (self.new_record? == false and self.password.present?)
+  end
+
 end

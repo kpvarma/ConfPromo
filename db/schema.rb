@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324091530) do
+ActiveRecord::Schema.define(version: 20150403044822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,12 +57,11 @@ ActiveRecord::Schema.define(version: 20150324091530) do
   add_index "uanswers", ["user_id"], name: "index_uanswers_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "user_name"
-    t.string   "email"
-    t.string   "organization"
-    t.string   "designation"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.text     "name",            null: false
+    t.text     "email",           null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest", null: false
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
