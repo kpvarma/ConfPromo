@@ -7,6 +7,7 @@ gem 'rails', '4.2.0'
 
 # Database
 gem 'pg'
+gem 'kramdown'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.1.2'

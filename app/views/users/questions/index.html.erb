@@ -1,0 +1,32 @@
+<%= theme_heading("Manage Questions") %>
+
+<div class="row mb-10">
+	<div class="col-sm-6">
+		<%= theme_button('New Question', 'plus', new_users_question_path) %>
+	</div>
+	<div class="col-sm-6">
+		<%= theme_search_form(Question, users_questions_path) %>
+  </div>
+</div>
+
+<%# Renders a partial to display all the questions %>
+<div class="row">
+	<div id="div_question_index" class="col-sm-6 hidden-xs">
+		<%= render :partial=>"index" %>
+	</div>
+	<div id="div_question_drop_down" class="col-xs-12 visible-xs">
+		<%= theme_drop_down(@questions, :title, scope: :users) %>
+	</div>
+
+	<div class="col-xs-12 col-sm-6">
+		<div id="div_question_show">
+			<%= theme_detail_box(@questions) %>
+		</div>
+		<div id="div_question_details">
+			<%= render :partial=>"details" if @questions.any? %>
+		</div>
+	</div>
+
+</div>
+
+

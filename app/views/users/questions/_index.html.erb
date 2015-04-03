@@ -1,0 +1,9 @@
+<% @questions.each do |question| %>
+  <div id="div_question_<%= question.id %>">
+    <%= render :partial=>"item", :locals=>{:question=>question} %>
+  </div>
+<% end %>
+
+<%= theme_panel_message(I18n.translate("forms.no_results")) if @questions.blank? %>
+
+<%= theme_paginate(@questions) %>

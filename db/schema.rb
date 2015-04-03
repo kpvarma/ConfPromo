@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403044822) do
+ActiveRecord::Schema.define(version: 20150403073425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "choices", force: :cascade do |t|
+    t.string   "text",        limit: 512
+    t.boolean  "answer",                  default: false
+    t.integer  "question_id"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  add_index "choices", ["question_id"], name: "index_choices_on_question_id", using: :btree
 
   create_table "qchoices", force: :cascade do |t|
     t.integer  "qoption_id"
@@ -27,10 +37,10 @@ ActiveRecord::Schema.define(version: 20150403044822) do
   add_index "qchoices", ["question_id"], name: "index_qchoices_on_question_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "question"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "answer_id"
+    t.text     "title",                    null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "description", limit: 2048, null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -71,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150403044822) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
+  add_foreign_key "choices", "questions"
   add_foreign_key "qchoices", "questions"
   add_foreign_key "uanswers", "questions"
   add_foreign_key "uanswers", "users"

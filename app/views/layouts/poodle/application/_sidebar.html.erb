@@ -14,17 +14,7 @@
   </li>
 
   <li class="<%= nav_class("users/questions") %>">
-    <%= link_to raw("<i class=\"fa fa-group\"></i> Manage Questions"), "#" %>
-  </li>
-
-  <li class="heading">Account</li>
-
-  <li class="<%= nav_class("user/profile") %>">
-    <%= link_to raw("<i class=\"fa fa-user\"></i> My Profile"), "#" %>
-  </li>
-
-  <li>
-    <%= link_to raw("<i class=\"fa fa-power-off\"></i> Sign Out"), sign_out_path, :method => :delete %>
+    <%= link_to raw("<i class=\"fa fa-group\"></i> Manage Questions"), users_questions_path %>
   </li>
 
 </ul>

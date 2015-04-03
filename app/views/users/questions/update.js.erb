@@ -1,0 +1,19 @@
+<% @question.reload.assign_choices_and_answers %>
+<% if @question.errors.blank? %>
+  // Fill the right box with first item details
+  $('#div_question_show').html("<%= escape_javascript(render(:partial=>"show")) %>");
+
+  // Refresh the updated item in the list
+  $("#div_question_<%= @question.id %>").html("<%= escape_javascript(render :partial => 'item', :locals => { :question => @question }) %>")
+  $(".panel-message").hide();
+<% else %>
+  $('#div_question_show').html("<%= escape_javascript(render(:partial=>'form')) %>");
+  validateQuestionForm();
+
+  // Populate Server Side Errors
+  <%
+    text = "You have few errors. They have been highlighted."
+    error_message = content_tag(:div, text, class: "alert alert-danger")
+  %>
+  $("#question_form_error").html("<%= escape_javascript(error_message) %>");
+<% end %>

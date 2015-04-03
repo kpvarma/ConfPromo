@@ -1,0 +1,20 @@
+<% @question.reload.assign_choices_and_answers %>
+<% if @question.errors.blank? %>
+  // Fill the right box with first question details
+  $('#div_question_show').html("<%= escape_javascript(render(:partial=>'show')) %>");
+  $('#div_question_details').html("<%= escape_javascript(render(:partial=>'details')) %>");
+
+  // Add the newly created item to the list
+  $("#div_question_index").prepend("<div id=\"div_question_<%= @question.id %>\"><%= escape_javascript(render(:partial => 'item', :locals => { :question => @question })) %></div>")
+  $(".panel-message").hide();
+<% else %>
+  $('#div_question_show').html("<%= escape_javascript(render(:partial=>'form')) %>");
+  validateQuestionForm();
+
+  // Populate Server Side Errors
+  <%
+    text = "You have few errors. They have been highlighted."
+    error_message = content_tag(:div, text, class: "alert alert-danger")
+  %>
+  $("#question_form_error").html("<%= escape_javascript(error_message) %>");
+<% end %>

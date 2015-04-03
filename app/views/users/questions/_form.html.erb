@@ -1,0 +1,48 @@
+<%= form_for([:users, @question], :html => {:id=>"form_question", :class=>"mb-0 form-horizontal", :role => "form", :method => (@question.new_record? ? :post : :put), :remote=>true}) do |f| %>
+
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= params[:action].titleize %> Question
+    </div>
+    <div class="panel-body" style="height:auto;">
+
+      <div id="question_form_error">
+        <%= @question.errors[:base].to_sentence %>
+      </div>
+
+      <div class="form-inputs mb-30 mt-30">
+
+        <%= theme_form_field(@question, :title) %>
+
+        <%= theme_form_field(@question, :description, html_options: {type: 'textarea', style: "height: 200px"}) %>
+
+        <%= theme_form_field(@question, :choice_1) %>
+
+        <%= theme_form_field(@question, :choice_2) %>
+
+        <%= theme_form_field(@question, :choice_3) %>
+
+        <%= theme_form_field(@question, :choice_4) %>
+
+        <% choices_list = ["Choice 1", "Choice 2", "Choice 3", "Choice 4"] %>
+        <% options_list = Array[*choices_list.collect {|v,i| [v,v] }].sort %>
+        <%= theme_form_select_group(f, @question, :answer, options_list, label: "Answer", param_name: "answer", prompt: true) %>
+
+      </div>
+
+    </div>
+
+    <div class="panel-footer clearfix">
+      <div class="pull-right">
+        <% show_url = @question.new_record? ? users_questions_path : users_question_path(@question) %>
+        <%= link_to "Cancel", show_url, class: "btn btn-default", remote: true %>
+        <%= theme_form_button(@question) %>
+      </div>
+    </div>
+
+  </div>
+
+<% end %>
+

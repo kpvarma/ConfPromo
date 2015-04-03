@@ -1,0 +1,17 @@
+<% if @question.errors.blank? %>
+
+  // Fill the right box with first item details
+  $('#div_question_details').html("<%= escape_javascript(render(:partial=>"show")) %>");
+
+  // Refresh the updated item in the list
+  $("#div_question_<%= @question.id %>").html("<%= escape_javascript(render :partial => 'item', :locals => { :question => @question }) %>")
+
+  // Close Modal
+  closeModal();
+
+  <% else %>
+  // Populate Server Side Errors
+  errorMessages = <%= @question.errors.full_messages.to_json.html_safe %>;
+  populateServerSideErrors('question', errorMessages);
+
+  <% end %>

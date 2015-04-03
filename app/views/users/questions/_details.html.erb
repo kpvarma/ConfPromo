@@ -1,0 +1,39 @@
+<div class="panel panel-default mt-10">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      Choices Details
+    </h3>
+  </div>
+
+  <div class="panel-body clearfix">
+
+    <table class="table table-condensed table-hover table-striped mt-20">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Text</th>
+          <th>Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @question.choices.each do |c| %>
+          <tr class="text-color-gray">
+            <td><%= c.id %></td>
+            <td class="bold"><%= c.text %></td>
+            <td><%= c.answer %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= theme_panel_sub_heading "Answer: #{@question.answer.text}", "#", "fs-14 text-color-green" if @question.answer %>
+
+  </div>
+
+</div>
+
+<% cols = [:id, :title, :description, :created_at, :updated_at] %>
+
+<%= theme_more_widget(@question,
+          data_columns: cols,
+          super_admin: false) %>

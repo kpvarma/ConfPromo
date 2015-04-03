@@ -1,0 +1,20 @@
+<%= flash_message if request.xhr? -%>
+
+<div class="panel panel-default">
+  <div class="panel-body" style="height:auto;">
+    <%= theme_panel_heading(@question.title) %>
+    <%= clear_tag(20) %>
+    <%= raw kramdown(@question.description) %>
+  </div>
+
+  <%
+    edit_link = edit_users_question_path(@question)
+    delete_link = users_question_path(@question)
+  %>
+
+  <%= link_to raw("<i class=\"fa fa-edit mr-5\"></i> Edit"), edit_link, :remote=>true, class: "btn btn-xs btn-default pull-right ml-10 mr-10" %>
+  <%= link_to raw("<i class=\"fa fa-trash mr-5\"></i> Delete"), delete_link, method: :delete, data: { confirm: 'Are you sure?' }, :remote=>true, class: "btn btn-xs btn-danger pull-right" %>
+
+  <%= clear_tag(10) %>
+
+</div>
