@@ -1,0 +1,13 @@
+<div class="panel panel-default media p-5">
+  <a class="media-left" href="#" style="width:25%;">
+    <%#= display_user_image(user, "profile_picture.image.thumb.url", width: 80) %>
+  </a>
+  <div class="media-body">
+    <%= theme_item_title(user.name, users_user_path(user)) %>
+    <%= theme_item_sub_title(user.email) %>
+  </div>
+
+</div>
+
+
+

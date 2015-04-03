@@ -1,0 +1,30 @@
+<%
+  edit_link = edit_users_user_path(@user)
+  delete_link = users_user_path(@user)
+%>
+
+<div class="panel-footer">
+
+  <div class="dropdown pull-right m-10">
+
+    <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="color:inherit;">
+      <%= raw("<i class=\"fa fa-cogs mr-5\"></i> Action") %>
+      <span class="caret"></span>
+    </button>
+
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+      <li role="presentation">
+        <%= link_to raw("<i class=\"fa fa-edit mr-5\"></i> Edit"), edit_link, :remote=>true, role: "menuitem", tabindex: "-1" %>
+      </li>
+      <li role="presentation" class="divider"></li>
+      <li role="presentation">
+        <%= link_to raw("<i class=\"fa fa-trash mr-5\"></i> Delete"), delete_link, method: :delete, role: "menuitem", tabindex: "-1", data: { confirm: 'Are you sure?' }, :remote=>true %>
+      </li>
+    </ul>
+
+  </div>
+
+  <%= clear_tag %>
+
+</div>

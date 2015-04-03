@@ -31,10 +31,21 @@ class User < ActiveRecord::Base
                                         LOWER(email) LIKE LOWER('%#{query}%')")
                         }
 
+  # ------------------
+  # Instance Methods
+  # ------------------
+
+  def assign_default_password_if_nil
+    self.password = DEFAULT_PASSWORD
+    self.password_confirmation = DEFAULT_PASSWORD
+  end
+
   private
 
   def should_validate_password?
     self.new_record? || (self.new_record? == false and self.password.present?)
   end
+
+
 
 end

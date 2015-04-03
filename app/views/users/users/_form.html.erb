@@ -1,0 +1,35 @@
+<%= form_for([:users, @user], :html => {:id=>"form_user", :class=>"mb-0 form-horizontal", :role => "form", :method => (@user.new_record? ? :post : :put), :remote=>true}) do |f| %>
+
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= params[:action].titleize %> User
+    </div>
+    <div class="panel-body" style="height:auto;">
+
+      <div id="user_form_error">
+        <%= @user.errors[:base].to_sentence %>
+      </div>
+
+      <div class="form-inputs mb-30 mt-30">
+
+        <%= theme_form_field(@user, :name) %>
+        <%= theme_form_field(@user, :email) %>
+
+      </div>
+
+    </div>
+
+    <div class="panel-footer clearfix">
+      <div class="pull-right">
+        <% show_url = @user.new_record? ? users_users_path : users_user_path(@user) %>
+        <%= link_to "Cancel", show_url, class: "btn btn-default", remote: true %>
+        <%= theme_form_button(@user) %>
+      </div>
+    </div>
+
+  </div>
+
+<% end %>
+

@@ -46,5 +46,13 @@ RSpec.describe User, :type => :model do
       expect(User.search("yopmail")).to match_array([user1, user2, user3])
     end
   end
+
+  context "Instance Methods" do
+    it "assign_default_password_if_nil" do
+      user = FactoryGirl.build(:user)
+      user.assign_default_password_if_nil
+      expect(user.password).to eq(User::DEFAULT_PASSWORD)
+    end
+  end
 end
 

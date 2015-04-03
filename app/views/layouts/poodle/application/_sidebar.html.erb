@@ -1,0 +1,31 @@
+<%= image_tag("qwinix_white_logo.png", class: "centered mt-20", alt: "Qwinix Logo", width: "80%") %>
+<div class="cl-30"></div>
+
+<ul>
+
+  <li class="heading">User Home</li>
+
+  <li class="<%= nav_class("user/dashboard") %>">
+    <%= link_to raw("<i class=\"fa fa-dashboard\"></i> Dashboard"), "#" %>
+  </li>
+
+  <li class="<%= nav_class("users/users") %>">
+    <%= link_to raw("<i class=\"fa fa-group\"></i> Manage Users"), users_users_path %>
+  </li>
+
+  <li class="<%= nav_class("users/questions") %>">
+    <%= link_to raw("<i class=\"fa fa-group\"></i> Manage Questions"), "#" %>
+  </li>
+
+  <li class="heading">Account</li>
+
+  <li class="<%= nav_class("user/profile") %>">
+    <%= link_to raw("<i class=\"fa fa-user\"></i> My Profile"), "#" %>
+  </li>
+
+  <li>
+    <%= link_to raw("<i class=\"fa fa-power-off\"></i> Sign Out"), sign_out_path, :method => :delete %>
+  </li>
+
+</ul>
+

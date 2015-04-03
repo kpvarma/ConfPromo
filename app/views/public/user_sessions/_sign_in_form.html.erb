@@ -1,0 +1,22 @@
+<%
+  redirect_back_url = params[:redirect_back_url] unless defined?(redirect_back_url)
+%>
+
+<%= form_tag main_app.create_session_path, :role=>"form", id: "form_sign_in", class: "m-30" do %>
+
+  <div class="form-group mt-10">
+    <label for="sign_in_email">Email or Username</label>
+    <%= text_field_tag :email, params[:email], :placeholder=> "Email", :name => "email", :class=>"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <label for="sign_in_password">Password</label>
+    <%= password_field_tag :password, '', :placeholder=> "Password", :name => "password", :class=>"form-control"%>
+  </div>
+
+  <%= submit_tag "Sign In", :class => "btn btn-primary pull-right" %>
+  <div class="cl-10"></div>
+
+<% end %>
+
+

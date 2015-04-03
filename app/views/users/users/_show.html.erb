@@ -1,0 +1,26 @@
+<%= flash_message if request.xhr? -%>
+
+<div class="panel panel-default">
+  <div class="panel-body" style="height:auto;">
+    <div class="pull-left" style="width:30%;">
+      <%#= edit_image(@user, "profile_picture.image.large.url", upload_image_link(@user, :profile_picture)) %>
+    </div>
+
+    <div class="pull-left ml-10" style="width:65%;">
+      <%= theme_panel_heading(@user.name) %>
+      <%= theme_panel_sub_heading(@user.email, "#") %>
+    </div>
+
+  </div>
+
+  <%
+    edit_link = edit_users_user_path(@user)
+    delete_link = users_user_path(@user)
+  %>
+
+  <%= link_to raw("<i class=\"fa fa-edit mr-5\"></i> Edit"), edit_link, :remote=>true, class: "btn btn-xs btn-default pull-right ml-10 mr-10" %>
+  <%= link_to raw("<i class=\"fa fa-trash mr-5\"></i> Delete"), delete_link, method: :delete, data: { confirm: 'Are you sure?' }, :remote=>true, class: "btn btn-xs btn-danger pull-right" %>
+
+  <%= clear_tag(10) %>
+
+</div>
