@@ -64,7 +64,7 @@ describe Users::UsersController, :type => :controller do
 
   context "edit" do
     it "should display the form" do
-      arr = [user_1,user_2, user_1]
+      arr = [user_1, user_2, user_3]
       get :edit, {id: user_1.id}, {id: user_1.id}
       expect(assigns[:users]).to match_array(arr)
       expect(assigns[:user]).to eq(user_1)
@@ -93,7 +93,8 @@ describe Users::UsersController, :type => :controller do
 
   context "destroy" do
     it "should remove the user" do
-      xhr :delete, :destroy, {id: user_1.id}, {id: user_1.id}
+      user_2
+      xhr :delete, :destroy, {id: user_2.id}, {id: user_1.id}
       expect(User.count).to  eq 1
       expect(response.code).to eq("200")
     end
