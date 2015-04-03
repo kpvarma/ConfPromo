@@ -1,0 +1,20 @@
+/spec/*
+/log/*
+/tmp/*
+/test/*
+
+# Ignore bundler config
+/.bundle
+/vendor/bundle
+/vendor/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sql
+
+/public/asset_test/*
+/public/system/*
+/public/uploads/*
+/public/resumes/*
+/public/assets/*
+/coverage/
